@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Client.
+    -->
+    <changeSet id="20220518152148-1" author="jhipster">
+        <createTable tableName="client">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)" remarks="Название организации клиента">
+                <constraints nullable="false" />
+            </column>
+            <column name="sales_manager_id" type="bigint" remarks="Sales Manager, который заводил клиента">
+                <constraints nullable="false" />
+            </column>
+            <column name="country_id" type="varchar(255)" remarks="Страна клиента справочник">
+                <constraints nullable="false" />
+            </column>
+            <column name="partner_status" type="boolean" remarks="Статус партнера">
+                <constraints nullable="false" />
+            </column>
+            <column name="contact_person" type="varchar(255)" remarks="Контактное лицо">
+                <constraints nullable="false" />
+            </column>
+            <column name="contract_email" type="varchar(255)" remarks="Электронная почта контактного лица">
+                <constraints nullable="false" />
+            </column>
+            <column name="industry_id" type="varchar(255)" remarks="Индустрия клиента справочник">
+                <constraints nullable="true" />
+            </column>
+            <column name="signer" type="varchar(255)" remarks="Лицо, которое подписывает все документы(Подписант)">
+                <constraints nullable="true" />
+            </column>
+            <column name="signer_position" type="varchar(255)" remarks="Должность подписанта">
+                <constraints nullable="true" />
+            </column>
+            <column name="legal_adress" type="varchar(255)" remarks="Юридический адрес">
+                <constraints nullable="true" />
+            </column>
+            <column name="registration_number" type="varchar(255)" remarks="Регистрационный номер организации клиента">
+                <constraints nullable="true" />
+            </column>
+            <column name="base_of_activity_id" type="varchar(255)" remarks="Основание деятельности справочник">
+                <constraints nullable="true" />
+            </column>
+            <column name="vat_number" type="varchar(255)" remarks="VAT номер(УНП)">
+                <constraints nullable="true" />
+            </column>
+            <column name="bank_name" type="varchar(255)" remarks="Банк">
+                <constraints nullable="true" />
+            </column>
+            <column name="bank_adress" type="varchar(255)" remarks="Адрес банка">
+                <constraints nullable="true" />
+            </column>
+            <column name="swift_code" type="varchar(255)" remarks="SWIFT код">
+                <constraints nullable="true" />
+            </column>
+            <column name="iban_code" type="varchar(255)" remarks="IBAN">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20220518152148-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/client.csv"
+                  separator=";"
+                  tableName="client"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="name" type="string"/>
+            <column name="sales_manager_id" type="numeric"/>
+            <column name="country_id" type="string"/>
+            <column name="partner_status" type="boolean"/>
+            <column name="contact_person" type="string"/>
+            <column name="contract_email" type="string"/>
+            <column name="industry_id" type="string"/>
+            <column name="signer" type="string"/>
+            <column name="signer_position" type="string"/>
+            <column name="legal_adress" type="string"/>
+            <column name="registration_number" type="string"/>
+            <column name="base_of_activity_id" type="string"/>
+            <column name="vat_number" type="string"/>
+            <column name="bank_name" type="string"/>
+            <column name="bank_adress" type="string"/>
+            <column name="swift_code" type="string"/>
+            <column name="iban_code" type="string"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

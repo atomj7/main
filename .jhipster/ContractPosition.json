@@ -1,0 +1,84 @@
+{
+  "applications": "*",
+  "changelogDate": "20220518152152",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "contract_position",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long",
+      "javadoc": "PK"
+    },
+    {
+      "fieldName": "contractPositionId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Справочник контрактных позиций"
+    },
+    {
+      "fieldName": "employeeId",
+      "fieldType": "Long",
+      "javadoc": "Оплачиваемый сотрудник"
+    },
+    {
+      "fieldName": "subcontractId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Ссылка на субконтракт"
+    },
+    {
+      "fieldName": "numberContractPosition",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Контрактные позиции"
+    },
+    {
+      "fieldName": "restrictionTypeId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Тип Ограничения справочник"
+    },
+    {
+      "fieldName": "restriction",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Ограничение"
+    },
+    {
+      "fieldName": "currencyId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Валюта справочник"
+    },
+    {
+      "fieldName": "rateAnHour",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Рейт час"
+    },
+    {
+      "fieldName": "statusId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Статус словарей"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "Contract position",
+  "jpaMetamodelFiltering": false,
+  "name": "ContractPosition",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "subcontract",
+      "otherEntityRelationshipName": "id",
+      "relationshipName": "subcontractId",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl",
+  "skipClient": true
+}

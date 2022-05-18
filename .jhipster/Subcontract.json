@@ -1,0 +1,141 @@
+{
+  "applications": "*",
+  "changelogDate": "20220518152151",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "subcontract",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long",
+      "javadoc": "ПК"
+    },
+    {
+      "fieldName": "contractId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Ссылка на контракт"
+    },
+    {
+      "fieldName": "projectId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Ссылка на проект"
+    },
+    {
+      "fieldName": "subcontractCipher",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Шифр субконтракта"
+    },
+    {
+      "fieldName": "statusId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Статус из справочника"
+    },
+    {
+      "fieldName": "cooperationTypeId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Вид сотрудничества справочник"
+    },
+    {
+      "fieldName": "sum",
+      "fieldType": "Float",
+      "javadoc": "Сумма"
+    },
+    {
+      "fieldName": "positions",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Количество контрактных позиций в рамках субконтракта"
+    },
+    {
+      "fieldName": "currencyId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Справочник валют"
+    },
+    {
+      "fieldName": "paymentTermTypeId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Справочник типов сроков оплаты"
+    },
+    {
+      "fieldName": "paymentTermId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Cрок оплаты"
+    },
+    {
+      "fieldName": "startDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Дата начала"
+    },
+    {
+      "fieldName": "finishDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Дата окончания"
+    },
+    {
+      "fieldName": "typeId",
+      "fieldType": "String",
+      "javadoc": "Тип субконтракта справочник"
+    },
+    {
+      "fieldName": "tasktTypeId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Тип CV Project справочник"
+    },
+    {
+      "fieldName": "technologyId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Технология справочник"
+    },
+    {
+      "fieldName": "domenId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Домен справочник"
+    },
+    {
+      "fieldName": "link",
+      "fieldType": "String",
+      "javadoc": "Ссылка на документ"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Subcontract",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "contractPosition",
+      "otherEntityRelationshipName": "subcontractId",
+      "relationshipName": "id",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "contract",
+      "otherEntityRelationshipName": "id",
+      "relationshipName": "contractId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "project",
+      "otherEntityRelationshipName": "id",
+      "relationshipName": "projectId",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl",
+  "skipClient": true
+}

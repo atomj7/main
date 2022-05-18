@@ -1,0 +1,70 @@
+{
+  "applications": "*",
+  "changelogDate": "20220518152150",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "project",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "clientId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Клиент"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Название проекта"
+    },
+    {
+      "fieldName": "startDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Дата начала"
+    },
+    {
+      "fieldName": "finishDate",
+      "fieldType": "LocalDate",
+      "javadoc": "Дата окончания"
+    },
+    {
+      "fieldName": "link",
+      "fieldType": "String",
+      "javadoc": "Ссылка"
+    },
+    {
+      "fieldName": "statusId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Статус дикшинари"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "Projects",
+  "jpaMetamodelFiltering": false,
+  "name": "Project",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "subcontract",
+      "otherEntityRelationshipName": "projectId",
+      "relationshipName": "id",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "client",
+      "otherEntityRelationshipName": "id",
+      "relationshipName": "clientId",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl",
+  "skipClient": true
+}
