@@ -54,7 +54,7 @@ public class ProjectDTO implements Serializable {
     @Schema(description = "Статус дикшинари", required = true)
     private String statusId;
 
-    private ClientDTO clientId;
+    private ClientDTO client;
 
     public Long getId() {
         return id;
@@ -112,12 +112,12 @@ public class ProjectDTO implements Serializable {
         this.statusId = statusId;
     }
 
-    public ClientDTO getClientId() {
-        return clientId;
+    public ClientDTO getClient() {
+        return client;
     }
 
-    public void setClientId(ClientDTO clientId) {
-        this.clientId = clientId;
+    public void setClient(ClientDTO client) {
+        this.client = client;
     }
 
     @Override
@@ -152,7 +152,7 @@ public class ProjectDTO implements Serializable {
             ", finishDate='" + getFinishDate() + "'" +
             ", link='" + getLink() + "'" +
             ", statusId='" + getStatusId() + "'" +
-            ", clientId=" + getClientId() +
+            ", client=" + getClient() +
             "}";
     }
 }

@@ -110,14 +110,14 @@
   "relationships": [
     {
       "otherEntityName": "project",
-      "otherEntityRelationshipName": "clientId",
-      "relationshipName": "id",
+      "otherEntityRelationshipName": "client",
+      "relationshipName": "project",
       "relationshipType": "one-to-many"
     },
     {
       "otherEntityName": "contract",
-      "otherEntityRelationshipName": "clientId",
-      "relationshipName": "id",
+      "otherEntityRelationshipName": "client",
+      "relationshipName": "contract",
       "relationshipType": "one-to-many"
     }
   ],

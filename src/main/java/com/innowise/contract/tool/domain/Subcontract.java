@@ -143,22 +143,22 @@ public class Subcontract implements Serializable {
     private String link;
 
     @Transient
-    @JsonIgnoreProperties(value = { "subcontractId" }, allowSetters = true)
-    private Set<ContractPosition> ids = new HashSet<>();
+    @JsonIgnoreProperties(value = { "subcontract" }, allowSetters = true)
+    private Set<ContractPosition> contractPositions = new HashSet<>();
 
     @Transient
-    @JsonIgnoreProperties(value = { "ids", "clientId" }, allowSetters = true)
-    private Contract contractId;
+    @JsonIgnoreProperties(value = { "subcontracts", "client" }, allowSetters = true)
+    private Contract contract;
 
     @Transient
-    @JsonIgnoreProperties(value = { "ids", "clientId" }, allowSetters = true)
-    private Project projectId;
+    @JsonIgnoreProperties(value = { "subcontracts", "client" }, allowSetters = true)
+    private Project project;
 
-    @Column("contract_id_id")
-    private Long contractIdId;
+    @Column("contract_id")
+    private Long contractId;
 
-    @Column("project_id_id")
-    private Long projectIdId;
+    @Column("project_id")
+    private Long projectId;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -396,79 +396,79 @@ public class Subcontract implements Serializable {
         this.link = link;
     }
 
-    public Set<ContractPosition> getIds() {
-        return this.ids;
+    public Set<ContractPosition> getContractPositions() {
+        return this.contractPositions;
     }
 
-    public void setIds(Set<ContractPosition> contractPositions) {
-        if (this.ids != null) {
-            this.ids.forEach(i -> i.setSubcontractId(null));
+    public void setContractPositions(Set<ContractPosition> contractPositions) {
+        if (this.contractPositions != null) {
+            this.contractPositions.forEach(i -> i.setSubcontract(null));
         }
         if (contractPositions != null) {
-            contractPositions.forEach(i -> i.setSubcontractId(this));
+            contractPositions.forEach(i -> i.setSubcontract(this));
         }
-        this.ids = contractPositions;
+        this.contractPositions = contractPositions;
     }
 
-    public Subcontract ids(Set<ContractPosition> contractPositions) {
-        this.setIds(contractPositions);
+    public Subcontract contractPositions(Set<ContractPosition> contractPositions) {
+        this.setContractPositions(contractPositions);
         return this;
     }
 
-    public Subcontract addId(ContractPosition contractPosition) {
-        this.ids.add(contractPosition);
-        contractPosition.setSubcontractId(this);
+    public Subcontract addContractPosition(ContractPosition contractPosition) {
+        this.contractPositions.add(contractPosition);
+        contractPosition.setSubcontract(this);
         return this;
     }
 
-    public Subcontract removeId(ContractPosition contractPosition) {
-        this.ids.remove(contractPosition);
-        contractPosition.setSubcontractId(null);
+    public Subcontract removeContractPosition(ContractPosition contractPosition) {
+        this.contractPositions.remove(contractPosition);
+        contractPosition.setSubcontract(null);
         return this;
     }
 
-    public Contract getContractId() {
+    public Contract getContract() {
+        return this.contract;
+    }
+
+    public void setContract(Contract contract) {
+        this.contract = contract;
+        this.contractId = contract != null ? contract.getId() : null;
+    }
+
+    public Subcontract contract(Contract contract) {
+        this.setContract(contract);
+        return this;
+    }
+
+    public Project getProject() {
+        return this.project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+        this.projectId = project != null ? project.getId() : null;
+    }
+
+    public Subcontract project(Project project) {
+        this.setProject(project);
+        return this;
+    }
+
+    public Long getContractId() {
         return this.contractId;
     }
 
-    public void setContractId(Contract contract) {
+    public void setContractId(Long contract) {
         this.contractId = contract;
-        this.contractIdId = contract != null ? contract.getId() : null;
     }
 
-    public Subcontract contractId(Contract contract) {
-        this.setContractId(contract);
-        return this;
-    }
-
-    public Project getProjectId() {
+    public Long getProjectId() {
         return this.projectId;
     }
 
-    public void setProjectId(Project project) {
+    public void setProjectId(Long project) {
         this.projectId = project;
-        this.projectIdId = project != null ? project.getId() : null;
-    }
-
-    public Subcontract projectId(Project project) {
-        this.setProjectId(project);
-        return this;
-    }
-
-    public Long getContractIdId() {
-        return this.contractIdId;
-    }
-
-    public void setContractIdId(Long contract) {
-        this.contractIdId = contract;
-    }
-
-    public Long getProjectIdId() {
-        return this.projectIdId;
-    }
-
-    public void setProjectIdId(Long project) {
-        this.projectIdId = project;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

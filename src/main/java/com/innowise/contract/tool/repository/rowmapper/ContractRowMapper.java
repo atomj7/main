@@ -39,7 +39,7 @@ public class ContractRowMapper implements BiFunction<Row, String, Contract> {
         entity.setFinishDate(converter.fromRow(row, prefix + "_finish_date", LocalDate.class));
         entity.setStatusId(converter.fromRow(row, prefix + "_status_id", String.class));
         entity.setLink(converter.fromRow(row, prefix + "_link", String.class));
-        entity.setClientIdId(converter.fromRow(row, prefix + "_client_id_id", Long.class));
+        entity.setClientId(converter.fromRow(row, prefix + "_client_id", Long.class));
         return entity;
     }
 }

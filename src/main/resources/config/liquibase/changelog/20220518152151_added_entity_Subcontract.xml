@@ -65,10 +65,10 @@
             <column name="link" type="varchar(255)" remarks="Ссылка на документ">
                 <constraints nullable="true" />
             </column>
-            <column name="contract_id_id" type="bigint">
+            <column name="contract_id" type="bigint">
                 <constraints nullable="true" />
             </column>
-            <column name="project_id_id" type="bigint">
+            <column name="project_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->

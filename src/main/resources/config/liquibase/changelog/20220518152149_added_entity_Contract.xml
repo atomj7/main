@@ -53,7 +53,7 @@
             <column name="link" type="varchar(255)" remarks="Ссылка">
                 <constraints nullable="true" />
             </column>
-            <column name="client_id_id" type="bigint">
+            <column name="client_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->

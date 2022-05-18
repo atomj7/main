@@ -95,14 +95,14 @@
   "relationships": [
     {
       "otherEntityName": "subcontract",
-      "otherEntityRelationshipName": "contractId",
-      "relationshipName": "id",
+      "otherEntityRelationshipName": "contract",
+      "relationshipName": "subcontract",
       "relationshipType": "one-to-many"
     },
     {
       "otherEntityName": "client",
-      "otherEntityRelationshipName": "id",
-      "relationshipName": "clientId",
+      "otherEntityRelationshipName": "contract",
+      "relationshipName": "client",
       "relationshipType": "many-to-one"
     }
   ],

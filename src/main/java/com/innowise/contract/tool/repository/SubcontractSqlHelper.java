@@ -29,8 +29,8 @@ public class SubcontractSqlHelper {
         columns.add(Column.aliased("domen_id", table, columnPrefix + "_domen_id"));
         columns.add(Column.aliased("link", table, columnPrefix + "_link"));
 
-        columns.add(Column.aliased("contract_id_id", table, columnPrefix + "_contract_id_id"));
-        columns.add(Column.aliased("project_id_id", table, columnPrefix + "_project_id_id"));
+        columns.add(Column.aliased("contract_id", table, columnPrefix + "_contract_id"));
+        columns.add(Column.aliased("project_id", table, columnPrefix + "_project_id"));
         return columns;
     }
 }

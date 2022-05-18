@@ -17,11 +17,11 @@ import reactor.core.publisher.Mono;
 public interface ContractPositionRepository extends ReactiveCrudRepository<ContractPosition, Long>, ContractPositionRepositoryInternal {
     Flux<ContractPosition> findAllBy(Pageable pageable);
 
-    @Query("SELECT * FROM contract_position entity WHERE entity.subcontract_id_id = :id")
-    Flux<ContractPosition> findBySubcontractId(Long id);
+    @Query("SELECT * FROM contract_position entity WHERE entity.subcontract_id = :id")
+    Flux<ContractPosition> findBySubcontract(Long id);
 
-    @Query("SELECT * FROM contract_position entity WHERE entity.subcontract_id_id IS NULL")
-    Flux<ContractPosition> findAllWhereSubcontractIdIsNull();
+    @Query("SELECT * FROM contract_position entity WHERE entity.subcontract_id IS NULL")
+    Flux<ContractPosition> findAllWhereSubcontractIsNull();
 
     @Override
     <S extends ContractPosition> Mono<S> save(S entity);

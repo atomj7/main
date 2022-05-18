@@ -119,20 +119,20 @@
   "relationships": [
     {
       "otherEntityName": "contractPosition",
-      "otherEntityRelationshipName": "subcontractId",
-      "relationshipName": "id",
+      "otherEntityRelationshipName": "subcontract",
+      "relationshipName": "contractPosition",
       "relationshipType": "one-to-many"
     },
     {
       "otherEntityName": "contract",
-      "otherEntityRelationshipName": "id",
-      "relationshipName": "contractId",
+      "otherEntityRelationshipName": "subcontract",
+      "relationshipName": "contract",
       "relationshipType": "many-to-one"
     },
     {
       "otherEntityName": "project",
-      "otherEntityRelationshipName": "id",
-      "relationshipName": "projectId",
+      "otherEntityRelationshipName": "subcontract",
+      "relationshipName": "project",
       "relationshipType": "many-to-one"
     }
   ],

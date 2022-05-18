@@ -11,7 +11,7 @@ import org.mapstruct.*;
  */
 @Mapper(componentModel = "spring")
 public interface ProjectMapper extends EntityMapper<ProjectDTO, Project> {
-    @Mapping(target = "clientId", source = "clientId", qualifiedByName = "clientId")
+    @Mapping(target = "client", source = "client", qualifiedByName = "clientId")
     ProjectDTO toDto(Project s);
 
     @Named("clientId")

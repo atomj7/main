@@ -8,15 +8,15 @@
     -->
     <changeSet id="20220518152151-2" author="jhipster">
 
-        <addForeignKeyConstraint baseColumnNames="contract_id_id"
+        <addForeignKeyConstraint baseColumnNames="contract_id"
                                  baseTableName="subcontract"
-                                 constraintName="fk_subcontract__contract_id_id"
+                                 constraintName="fk_subcontract__contract_id"
                                  referencedColumnNames="id"
                                  referencedTableName="contract"/>
 
-        <addForeignKeyConstraint baseColumnNames="project_id_id"
+        <addForeignKeyConstraint baseColumnNames="project_id"
                                  baseTableName="subcontract"
-                                 constraintName="fk_subcontract__project_id_id"
+                                 constraintName="fk_subcontract__project_id"
                                  referencedColumnNames="id"
                                  referencedTableName="project"/>
     </changeSet>

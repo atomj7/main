@@ -86,11 +86,11 @@ public class ContractPosition implements Serializable {
     private String statusId;
 
     @Transient
-    @JsonIgnoreProperties(value = { "ids", "contractId", "projectId" }, allowSetters = true)
-    private Subcontract subcontractId;
+    @JsonIgnoreProperties(value = { "contractPositions", "contract", "project" }, allowSetters = true)
+    private Subcontract subcontract;
 
-    @Column("subcontract_id_id")
-    private Long subcontractIdId;
+    @Column("subcontract_id")
+    private Long subcontractId;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -224,26 +224,26 @@ public class ContractPosition implements Serializable {
         this.statusId = statusId;
     }
 
-    public Subcontract getSubcontractId() {
-        return this.subcontractId;
+    public Subcontract getSubcontract() {
+        return this.subcontract;
     }
 
-    public void setSubcontractId(Subcontract subcontract) {
-        this.subcontractId = subcontract;
-        this.subcontractIdId = subcontract != null ? subcontract.getId() : null;
+    public void setSubcontract(Subcontract subcontract) {
+        this.subcontract = subcontract;
+        this.subcontractId = subcontract != null ? subcontract.getId() : null;
     }
 
-    public ContractPosition subcontractId(Subcontract subcontract) {
-        this.setSubcontractId(subcontract);
+    public ContractPosition subcontract(Subcontract subcontract) {
+        this.setSubcontract(subcontract);
         return this;
     }
 
-    public Long getSubcontractIdId() {
-        return this.subcontractIdId;
+    public Long getSubcontractId() {
+        return this.subcontractId;
     }
 
-    public void setSubcontractIdId(Long subcontract) {
-        this.subcontractIdId = subcontract;
+    public void setSubcontractId(Long subcontract) {
+        this.subcontractId = subcontract;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

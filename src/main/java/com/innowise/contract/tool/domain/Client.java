@@ -131,14 +131,12 @@ public class Client implements Serializable {
     private String ibanCode;
 
     @Transient
-    @Transient
-    @JsonIgnoreProperties(value = { "ids", "clientId" }, allowSetters = true)
-    private Set<Project> ids = new HashSet<>();
+    @JsonIgnoreProperties(value = { "subcontracts", "client" }, allowSetters = true)
+    private Set<Project> projects = new HashSet<>();
 
     @Transient
-    @Transient
-    @JsonIgnoreProperties(value = { "ids", "clientId" }, allowSetters = true)
-    private Set<Contract> ids = new HashSet<>();
+    @JsonIgnoreProperties(value = { "subcontracts", "client" }, allowSetters = true)
+    private Set<Contract> contracts = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -376,65 +374,65 @@ public class Client implements Serializable {
         this.ibanCode = ibanCode;
     }
 
-    public Set<Project> getIds() {
-        return this.ids;
+    public Set<Project> getProjects() {
+        return this.projects;
     }
 
-    public void setIds(Set<Project> projects) {
-        if (this.ids != null) {
-            this.ids.forEach(i -> i.setClientId(null));
+    public void setProjects(Set<Project> projects) {
+        if (this.projects != null) {
+            this.projects.forEach(i -> i.setClient(null));
         }
         if (projects != null) {
-            projects.forEach(i -> i.setClientId(this));
+            projects.forEach(i -> i.setClient(this));
         }
-        this.ids = projects;
+        this.projects = projects;
     }
 
-    public Client ids(Set<Project> projects) {
-        this.setIds(projects);
+    public Client projects(Set<Project> projects) {
+        this.setProjects(projects);
         return this;
     }
 
-    public Client addId(Project project) {
-        this.ids.add(project);
-        project.setClientId(this);
+    public Client addProject(Project project) {
+        this.projects.add(project);
+        project.setClient(this);
         return this;
     }
 
-    public Client removeId(Project project) {
-        this.ids.remove(project);
-        project.setClientId(null);
+    public Client removeProject(Project project) {
+        this.projects.remove(project);
+        project.setClient(null);
         return this;
     }
 
-    public Set<Contract> getIds() {
-        return this.ids;
+    public Set<Contract> getContracts() {
+        return this.contracts;
     }
 
-    public void setIds(Set<Contract> contracts) {
-        if (this.ids != null) {
-            this.ids.forEach(i -> i.setClientId(null));
+    public void setContracts(Set<Contract> contracts) {
+        if (this.contracts != null) {
+            this.contracts.forEach(i -> i.setClient(null));
         }
         if (contracts != null) {
-            contracts.forEach(i -> i.setClientId(this));
+            contracts.forEach(i -> i.setClient(this));
         }
-        this.ids = contracts;
+        this.contracts = contracts;
     }
 
-    public Client ids(Set<Contract> contracts) {
-        this.setIds(contracts);
+    public Client contracts(Set<Contract> contracts) {
+        this.setContracts(contracts);
         return this;
     }
 
-    public Client addId(Contract contract) {
-        this.ids.add(contract);
-        contract.setClientId(this);
+    public Client addContract(Contract contract) {
+        this.contracts.add(contract);
+        contract.setClient(this);
         return this;
     }
 
-    public Client removeId(Contract contract) {
-        this.ids.remove(contract);
-        contract.setClientId(null);
+    public Client removeContract(Contract contract) {
+        this.contracts.remove(contract);
+        contract.setClient(null);
         return this;
     }
 

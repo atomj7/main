@@ -17,17 +17,17 @@ import reactor.core.publisher.Mono;
 public interface SubcontractRepository extends ReactiveCrudRepository<Subcontract, Long>, SubcontractRepositoryInternal {
     Flux<Subcontract> findAllBy(Pageable pageable);
 
-    @Query("SELECT * FROM subcontract entity WHERE entity.contract_id_id = :id")
-    Flux<Subcontract> findByContractId(Long id);
+    @Query("SELECT * FROM subcontract entity WHERE entity.contract_id = :id")
+    Flux<Subcontract> findByContract(Long id);
 
-    @Query("SELECT * FROM subcontract entity WHERE entity.contract_id_id IS NULL")
-    Flux<Subcontract> findAllWhereContractIdIsNull();
+    @Query("SELECT * FROM subcontract entity WHERE entity.contract_id IS NULL")
+    Flux<Subcontract> findAllWhereContractIsNull();
 
-    @Query("SELECT * FROM subcontract entity WHERE entity.project_id_id = :id")
-    Flux<Subcontract> findByProjectId(Long id);
+    @Query("SELECT * FROM subcontract entity WHERE entity.project_id = :id")
+    Flux<Subcontract> findByProject(Long id);
 
-    @Query("SELECT * FROM subcontract entity WHERE entity.project_id_id IS NULL")
-    Flux<Subcontract> findAllWhereProjectIdIsNull();
+    @Query("SELECT * FROM subcontract entity WHERE entity.project_id IS NULL")
+    Flux<Subcontract> findAllWhereProjectIsNull();
 
     @Override
     <S extends Subcontract> Mono<S> save(S entity);

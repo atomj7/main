@@ -21,7 +21,7 @@ public class ContractPositionSqlHelper {
         columns.add(Column.aliased("rate_an_hour", table, columnPrefix + "_rate_an_hour"));
         columns.add(Column.aliased("status_id", table, columnPrefix + "_status_id"));
 
-        columns.add(Column.aliased("subcontract_id_id", table, columnPrefix + "_subcontract_id_id"));
+        columns.add(Column.aliased("subcontract_id", table, columnPrefix + "_subcontract_id"));
         return columns;
     }
 }

@@ -49,7 +49,7 @@ class ContractPositionRepositoryInternalImpl
     private final ContractPositionRowMapper contractpositionMapper;
 
     private static final Table entityTable = Table.aliased("contract_position", EntityManager.ENTITY_ALIAS);
-    private static final Table subcontractIdTable = Table.aliased("subcontract", "subcontractId");
+    private static final Table subcontractTable = Table.aliased("subcontract", "subcontract");
 
     public ContractPositionRepositoryInternalImpl(
         R2dbcEntityTemplate template,
@@ -78,14 +78,14 @@ class ContractPositionRepositoryInternalImpl
 
     RowsFetchSpec<ContractPosition> createQuery(Pageable pageable, Condition whereClause) {
         List<Expression> columns = ContractPositionSqlHelper.getColumns(entityTable, EntityManager.ENTITY_ALIAS);
-        columns.addAll(SubcontractSqlHelper.getColumns(subcontractIdTable, "subcontractId"));
+        columns.addAll(SubcontractSqlHelper.getColumns(subcontractTable, "subcontract"));
         SelectFromAndJoinCondition selectFrom = Select
             .builder()
             .select(columns)
             .from(entityTable)
-            .leftOuterJoin(subcontractIdTable)
-            .on(Column.create("subcontract_id_id", entityTable))
-            .equals(Column.create("id", subcontractIdTable));
+            .leftOuterJoin(subcontractTable)
+            .on(Column.create("subcontract_id", entityTable))
+            .equals(Column.create("id", subcontractTable));
         // we do not support Criteria here for now as of https://github.com/jhipster/generator-jhipster/issues/18269
         String select = entityManager.createSelect(selectFrom, ContractPosition.class, pageable, whereClause);
         return db.sql(select).map(this::process);
@@ -104,7 +104,7 @@ class ContractPositionRepositoryInternalImpl
 
     private ContractPosition process(Row row, RowMetadata metadata) {
         ContractPosition entity = contractpositionMapper.apply(row, "e");
-        entity.setSubcontractId(subcontractMapper.apply(row, "subcontractId"));
+        entity.setSubcontract(subcontractMapper.apply(row, "subcontract"));
         return entity;
     }
 

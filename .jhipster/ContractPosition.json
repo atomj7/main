@@ -74,8 +74,8 @@
   "relationships": [
     {
       "otherEntityName": "subcontract",
-      "otherEntityRelationshipName": "id",
-      "relationshipName": "subcontractId",
+      "otherEntityRelationshipName": "contractPosition",
+      "relationshipName": "subcontract",
       "relationshipType": "many-to-one"
     }
   ],
