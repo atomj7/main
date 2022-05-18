@@ -88,46 +88,7 @@ entity Project {
 
 }
 
-/**Субконтракты*/
-entity Subcontract {
 
-	/**ПК*/
-    id Long,
-    /**Ссылка на контракт*/
-    contractId Long required,
-    /**Ссылка на проект*/
-    projectId Long required,
-    /**Шифр субконтракта*/
-    subcontractCipher String required,
-    /**Статус из справочника*/
-    statusId String required,
-    /**Вид сотрудничества справочник*/
-    cooperationTypeId String required,
-    /**Сумма*/
-    sum Float,
-    /**Количество контрактных позиций в рамках субконтракта*/
-    positions Integer required,
-    /**Справочник валют*/
-    currencyId String required,
-	/**Справочник типов сроков оплаты*/
-    paymentTermTypeId String required,
-    /**Cрок оплаты*/
-    paymentTermId String required,
-    /**Дата начала*/
-    startDate LocalDate required,
-    /**Дата окончания*/
-    finishDate LocalDate required,
-    /**Тип субконтракта справочник*/
-    typeId String,
-    /**Тип CV\Project справочник*/
-    tasktTypeId String required,
-    /**Технология справочник*/
-    technologyId String required,
-    /**Домен справочник*/
-    domenId String required,
-    /**Ссылка на документ*/
-    link String
-}
 
 /**Contract position*/
 entity ContractPosition {
@@ -158,19 +119,13 @@ entity ContractPosition {
 relationship OneToMany {
 	Client{id} to Project {clientId},
 
-	Client{id} to Contract {clientId},
-	
-    Contract {id} to Subcontract {contractId},
-    
-    Project {id} to Subcontract {projectId},
-	
-    Subcontract{id} to ContractPosition {subcontractId}
+	Client{id} to Contract {clientId}
 }
 
 
 // Set pagination options
-paginate Client, Contract, Subcontract, ContractPosition with infinite-scroll
-paginate Client, Contract, Subcontract, ContractPosition with pagination
+paginate Client, Contract,  ContractPosition with infinite-scroll
+paginate Client, Contract, ContractPosition with pagination
 
 // Use Data Transfer Objects (DTO)
 // dto * with mapstruct
