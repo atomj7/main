@@ -116,7 +116,7 @@ entity Subcontract {
     finishDate LocalDate required,
     /**Тип субконтракта справочник*/
     typeId String,
-    /**Тип CV\Project справочник*/
+    /**Тип CV Project справочник*/
     tasktTypeId String required,
     /**Технология справочник*/
     technologyId String required,
@@ -144,7 +144,7 @@ entity ContractPosition {
     restriction Integer  required ,
     /**Валюта справочник*/
     currencyId String  required ,
-    /**Рейт\час*/
+    /**Рейт час*/
     rateAnHour Float  required ,
     /**Статус словарей*/
     statusId String required 
