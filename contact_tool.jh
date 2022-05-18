@@ -1,0 +1,184 @@
+
+/** Clients */
+entity Client {
+	id Long,
+	/** Название организации клиента*/
+	name String required,
+    /** Sales Manager, который заводил клиента*/
+    salesManagerId Long required,
+    /** Страна клиента справочник*/
+    countryId String required,
+     /** Статус партнера*/
+    partnerStatus Boolean required,
+     /** Контактное лицо*/
+    contactPerson String required,
+     /** Электронная почта контактного лица*/
+    contractEmail String required,
+    /** Индустрия клиента справочник*/
+    industryId String,
+     /** Лицо, которое подписывает все документы(Подписант)*/
+    signer String,
+    /** Должность подписанта*/
+    signerPosition String,
+    /** Юридический адрес*/
+    legalAdress String,
+    /** Регистрационный номер организации клиента*/
+    registrationNumber String,
+    /** Основание деятельности справочник*/
+    baseOfActivityId String,
+    /** VAT номер(УНП)*/
+  	vatNumber String,
+    /** Банк*/
+    bankName String,
+    /** Адрес банка*/
+    bankAdress String,
+    /** SWIFT код*/
+    swiftCode String,
+    /** IBAN*/
+    ibanCode String
+}
+
+/** Contracts*/
+entity Contract {
+	id Long,
+    /** Шифр контракта*/
+    cipher String required,
+	/**Айди клиента*/
+	clientId Long required,
+    /** Справочник поставщиков*/
+    providerId String required,
+    /**Тип контракта справочник*/
+    typeId String,
+    /**Сумма*/
+    sum Float required,
+    /**Всего позиций*/
+    positionCount Integer required,
+    /**Валюта справочник*/
+    currencyId String required,
+    /**Срок оплаты кол-во дней*/
+    paymentTerm Integer required,
+    /**Тип срока оплаты справочник*/
+    paymentTermTypeId String required ,
+    /**Дата начала*/
+    startDate LocalDate required,
+    /**Дата окончания*/
+    finishDate LocalDate required,
+    /*Статус справочник*/
+    statusId String required,
+    /**Ссылка*/
+    link String 
+    
+}
+
+/**Projects*/
+entity Project {
+	id Long,
+    /**Клиент*/
+    clientId Long required,
+	/**Название проекта*/
+	name String required,
+    /**Дата начала*/
+	startDate LocalDate required,
+    /**Дата окончания*/
+	finishDate LocalDate,
+    /**Ссылка*/
+	link String
+    /**Статус дикщинари*/
+    statusId String required,
+
+}
+
+/**Субконтракты*/
+entity Subcontract {
+
+	/**PK*/
+    id Long,
+    /**Ссылка на контракт*/
+    contractId Long required,
+    /**Ссылка на проект*/
+    projectId Long required,
+    /**Шифр субконтракта*/
+    subcontractCipher String required,
+    /**Статус из справочника*/
+    statusId String required,
+    /**Вид сотрудничества справочник*/
+    cooperationTypeId String required,
+    /**Сумма*/
+    sum Float,
+    /**Количество контрактных позиций в рамках субконтракта*/
+    positions Integer required,
+    /**Справочник валют*/
+    currencyId String required,
+	/**Справочник типов сроков оплаты*/
+    paymentTermTypeId String required,
+    /**Cрок оплаты*/
+    paymentTermId String required,
+    /**Дата начала*/
+    startDate LocalDate required,
+    /**Дата окончания*/
+    finishDate LocalDate required,
+    /**Тип субконтракта справочник*/
+    typeId String,
+    /**Тип CV\Project справочник*/
+    tasktTypeId String required,
+    /**Технология справочник*/
+    technologyId String required,
+    /**Домен справочник*/
+    domenId String required,
+    /**Ссылка на документ*/
+    link String
+}
+
+/**Contract position*/
+entity ContractPosition {
+	/**PK*/
+	id Long,
+    /**Справочник контрактных позиций*/
+	contractPositionId String required ,
+    /**Оплачиваемый сотрудник*/
+    employeeId Long,
+    /**Ссылка на субконтракт*/
+	subcontractId Long required ,
+    /**Контрактные позиции*/
+	numberContractPosition Integer required ,
+    /**Тип Ограничения справочник*/
+    restrictionTypeId String  required , 
+    /**Ограничение*/
+    restriction Integer  required ,
+    /**Валюта справочник*/
+    currencyId String  required ,
+    /**Рейт\час*/
+    rateAnHour Float  required ,
+    /**Статус словарей*/
+    statusId String required 
+    
+}
+
+
+relationship OneToMany {
+	Client{id} to Project {clientId},
+
+	Client{id} to Contract {clientId},
+	
+    Contract{id} to Subcontract{ContractId},
+    
+    Project{id} to Subcontract{projectId},
+	
+    Subcontract{id} to ContractPosition {subcontractId}
+}
+
+
+// Set pagination options
+paginate Client, Contract, Subcontract, ContractPosition with infinite-scroll
+paginate Client, Contract, Subcontract, ContractPosition with pagination
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
