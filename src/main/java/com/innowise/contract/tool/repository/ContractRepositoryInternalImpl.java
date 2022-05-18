@@ -48,7 +48,7 @@ class ContractRepositoryInternalImpl extends SimpleR2dbcRepository<Contract, Lon
     private final ContractRowMapper contractMapper;
 
     private static final Table entityTable = Table.aliased("contract", EntityManager.ENTITY_ALIAS);
-    private static final Table clientIdTable = Table.aliased("client", "clientId");
+    private static final Table clientTable = Table.aliased("client", "client");
 
     public ContractRepositoryInternalImpl(
         R2dbcEntityTemplate template,
@@ -77,14 +77,14 @@ class ContractRepositoryInternalImpl extends SimpleR2dbcRepository<Contract, Lon
 
     RowsFetchSpec<Contract> createQuery(Pageable pageable, Condition whereClause) {
         List<Expression> columns = ContractSqlHelper.getColumns(entityTable, EntityManager.ENTITY_ALIAS);
-        columns.addAll(ClientSqlHelper.getColumns(clientIdTable, "clientId"));
+        columns.addAll(ClientSqlHelper.getColumns(clientTable, "client"));
         SelectFromAndJoinCondition selectFrom = Select
             .builder()
             .select(columns)
             .from(entityTable)
-            .leftOuterJoin(clientIdTable)
-            .on(Column.create("client_id_id", entityTable))
-            .equals(Column.create("id", clientIdTable));
+            .leftOuterJoin(clientTable)
+            .on(Column.create("client_id", entityTable))
+            .equals(Column.create("id", clientTable));
         // we do not support Criteria here for now as of https://github.com/jhipster/generator-jhipster/issues/18269
         String select = entityManager.createSelect(selectFrom, Contract.class, pageable, whereClause);
         return db.sql(select).map(this::process);
@@ -103,7 +103,7 @@ class ContractRepositoryInternalImpl extends SimpleR2dbcRepository<Contract, Lon
 
     private Contract process(Row row, RowMetadata metadata) {
         Contract entity = contractMapper.apply(row, "e");
-        entity.setClientId(clientMapper.apply(row, "clientId"));
+        entity.setClient(clientMapper.apply(row, "client"));
         return entity;
     }
 

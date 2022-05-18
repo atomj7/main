@@ -64,15 +64,15 @@ public class Project implements Serializable {
     private String statusId;
 
     @Transient
-    @JsonIgnoreProperties(value = { "ids", "contractId", "projectId" }, allowSetters = true)
-    private Set<Subcontract> ids = new HashSet<>();
+    @JsonIgnoreProperties(value = { "contractPositions", "contract", "project" }, allowSetters = true)
+    private Set<Subcontract> subcontracts = new HashSet<>();
 
     @Transient
-    @JsonIgnoreProperties(value = { "ids", "ids" }, allowSetters = true)
-    private Client clientId;
+    @JsonIgnoreProperties(value = { "projects", "contracts" }, allowSetters = true)
+    private Client client;
 
-    @Column("client_id_id")
-    private Long clientIdId;
+    @Column("client_id")
+    private Long clientId;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -167,57 +167,57 @@ public class Project implements Serializable {
         this.statusId = statusId;
     }
 
-    public Set<Subcontract> getIds() {
-        return this.ids;
+    public Set<Subcontract> getSubcontracts() {
+        return this.subcontracts;
     }
 
-    public void setIds(Set<Subcontract> subcontracts) {
-        if (this.ids != null) {
-            this.ids.forEach(i -> i.setProjectId(null));
+    public void setSubcontracts(Set<Subcontract> subcontracts) {
+        if (this.subcontracts != null) {
+            this.subcontracts.forEach(i -> i.setProject(null));
         }
         if (subcontracts != null) {
-            subcontracts.forEach(i -> i.setProjectId(this));
+            subcontracts.forEach(i -> i.setProject(this));
         }
-        this.ids = subcontracts;
+        this.subcontracts = subcontracts;
     }
 
-    public Project ids(Set<Subcontract> subcontracts) {
-        this.setIds(subcontracts);
+    public Project subcontracts(Set<Subcontract> subcontracts) {
+        this.setSubcontracts(subcontracts);
         return this;
     }
 
-    public Project addId(Subcontract subcontract) {
-        this.ids.add(subcontract);
-        subcontract.setProjectId(this);
+    public Project addSubcontract(Subcontract subcontract) {
+        this.subcontracts.add(subcontract);
+        subcontract.setProject(this);
         return this;
     }
 
-    public Project removeId(Subcontract subcontract) {
-        this.ids.remove(subcontract);
-        subcontract.setProjectId(null);
+    public Project removeSubcontract(Subcontract subcontract) {
+        this.subcontracts.remove(subcontract);
+        subcontract.setProject(null);
         return this;
     }
 
-    public Client getClientId() {
+    public Client getClient() {
+        return this.client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+        this.clientId = client != null ? client.getId() : null;
+    }
+
+    public Project client(Client client) {
+        this.setClient(client);
+        return this;
+    }
+
+    public Long getClientId() {
         return this.clientId;
     }
 
-    public void setClientId(Client client) {
+    public void setClientId(Long client) {
         this.clientId = client;
-        this.clientIdId = client != null ? client.getId() : null;
-    }
-
-    public Project clientId(Client client) {
-        this.setClientId(client);
-        return this;
-    }
-
-    public Long getClientIdId() {
-        return this.clientIdId;
-    }
-
-    public void setClientIdId(Long client) {
-        this.clientIdId = client;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

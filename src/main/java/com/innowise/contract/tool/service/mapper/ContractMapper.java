@@ -11,7 +11,7 @@ import org.mapstruct.*;
  */
 @Mapper(componentModel = "spring")
 public interface ContractMapper extends EntityMapper<ContractDTO, Contract> {
-    @Mapping(target = "clientId", source = "clientId", qualifiedByName = "clientId")
+    @Mapping(target = "client", source = "client", qualifiedByName = "clientId")
     ContractDTO toDto(Contract s);
 
     @Named("clientId")

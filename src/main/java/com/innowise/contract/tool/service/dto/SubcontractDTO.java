@@ -133,9 +133,9 @@ public class SubcontractDTO implements Serializable {
     @Schema(description = "Ссылка на документ")
     private String link;
 
-    private ContractDTO contractId;
+    private ContractDTO contract;
 
-    private ProjectDTO projectId;
+    private ProjectDTO project;
 
     public Long getId() {
         return id;
@@ -281,20 +281,20 @@ public class SubcontractDTO implements Serializable {
         this.link = link;
     }
 
-    public ContractDTO getContractId() {
-        return contractId;
+    public ContractDTO getContract() {
+        return contract;
     }
 
-    public void setContractId(ContractDTO contractId) {
-        this.contractId = contractId;
+    public void setContract(ContractDTO contract) {
+        this.contract = contract;
     }
 
-    public ProjectDTO getProjectId() {
-        return projectId;
+    public ProjectDTO getProject() {
+        return project;
     }
 
-    public void setProjectId(ProjectDTO projectId) {
-        this.projectId = projectId;
+    public void setProject(ProjectDTO project) {
+        this.project = project;
     }
 
     @Override
@@ -340,8 +340,8 @@ public class SubcontractDTO implements Serializable {
             ", technologyId='" + getTechnologyId() + "'" +
             ", domenId='" + getDomenId() + "'" +
             ", link='" + getLink() + "'" +
-            ", contractId=" + getContractId() +
-            ", projectId=" + getProjectId() +
+            ", contract=" + getContract() +
+            ", project=" + getProject() +
             "}";
     }
 }

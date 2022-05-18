@@ -54,14 +54,14 @@
   "relationships": [
     {
       "otherEntityName": "subcontract",
-      "otherEntityRelationshipName": "projectId",
-      "relationshipName": "id",
+      "otherEntityRelationshipName": "project",
+      "relationshipName": "subcontract",
       "relationshipType": "one-to-many"
     },
     {
       "otherEntityName": "client",
-      "otherEntityRelationshipName": "id",
-      "relationshipName": "clientId",
+      "otherEntityRelationshipName": "project",
+      "relationshipName": "client",
       "relationshipType": "many-to-one"
     }
   ],

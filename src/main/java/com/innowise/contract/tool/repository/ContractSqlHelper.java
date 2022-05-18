@@ -25,7 +25,7 @@ public class ContractSqlHelper {
         columns.add(Column.aliased("status_id", table, columnPrefix + "_status_id"));
         columns.add(Column.aliased("link", table, columnPrefix + "_link"));
 
-        columns.add(Column.aliased("client_id_id", table, columnPrefix + "_client_id_id"));
+        columns.add(Column.aliased("client_id", table, columnPrefix + "_client_id"));
         return columns;
     }
 }

@@ -50,8 +50,8 @@ class SubcontractRepositoryInternalImpl extends SimpleR2dbcRepository<Subcontrac
     private final SubcontractRowMapper subcontractMapper;
 
     private static final Table entityTable = Table.aliased("subcontract", EntityManager.ENTITY_ALIAS);
-    private static final Table contractIdTable = Table.aliased("contract", "contractId");
-    private static final Table projectIdTable = Table.aliased("project", "projectId");
+    private static final Table contractTable = Table.aliased("contract", "contract");
+    private static final Table projectTable = Table.aliased("project", "project");
 
     public SubcontractRepositoryInternalImpl(
         R2dbcEntityTemplate template,
@@ -82,18 +82,18 @@ class SubcontractRepositoryInternalImpl extends SimpleR2dbcRepository<Subcontrac
 
     RowsFetchSpec<Subcontract> createQuery(Pageable pageable, Condition whereClause) {
         List<Expression> columns = SubcontractSqlHelper.getColumns(entityTable, EntityManager.ENTITY_ALIAS);
-        columns.addAll(ContractSqlHelper.getColumns(contractIdTable, "contractId"));
-        columns.addAll(ProjectSqlHelper.getColumns(projectIdTable, "projectId"));
+        columns.addAll(ContractSqlHelper.getColumns(contractTable, "contract"));
+        columns.addAll(ProjectSqlHelper.getColumns(projectTable, "project"));
         SelectFromAndJoinCondition selectFrom = Select
             .builder()
             .select(columns)
             .from(entityTable)
-            .leftOuterJoin(contractIdTable)
-            .on(Column.create("contract_id_id", entityTable))
-            .equals(Column.create("id", contractIdTable))
-            .leftOuterJoin(projectIdTable)
-            .on(Column.create("project_id_id", entityTable))
-            .equals(Column.create("id", projectIdTable));
+            .leftOuterJoin(contractTable)
+            .on(Column.create("contract_id", entityTable))
+            .equals(Column.create("id", contractTable))
+            .leftOuterJoin(projectTable)
+            .on(Column.create("project_id", entityTable))
+            .equals(Column.create("id", projectTable));
         // we do not support Criteria here for now as of https://github.com/jhipster/generator-jhipster/issues/18269
         String select = entityManager.createSelect(selectFrom, Subcontract.class, pageable, whereClause);
         return db.sql(select).map(this::process);
@@ -112,8 +112,8 @@ class SubcontractRepositoryInternalImpl extends SimpleR2dbcRepository<Subcontrac
 
     private Subcontract process(Row row, RowMetadata metadata) {
         Subcontract entity = subcontractMapper.apply(row, "e");
-        entity.setContractId(contractMapper.apply(row, "contractId"));
-        entity.setProjectId(projectMapper.apply(row, "projectId"));
+        entity.setContract(contractMapper.apply(row, "contract"));
+        entity.setProject(projectMapper.apply(row, "project"));
         return entity;
     }
 

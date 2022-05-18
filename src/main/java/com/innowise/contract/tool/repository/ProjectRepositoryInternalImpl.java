@@ -48,7 +48,7 @@ class ProjectRepositoryInternalImpl extends SimpleR2dbcRepository<Project, Long>
     private final ProjectRowMapper projectMapper;
 
     private static final Table entityTable = Table.aliased("project", EntityManager.ENTITY_ALIAS);
-    private static final Table clientIdTable = Table.aliased("client", "clientId");
+    private static final Table clientTable = Table.aliased("client", "client");
 
     public ProjectRepositoryInternalImpl(
         R2dbcEntityTemplate template,
@@ -77,14 +77,14 @@ class ProjectRepositoryInternalImpl extends SimpleR2dbcRepository<Project, Long>
 
     RowsFetchSpec<Project> createQuery(Pageable pageable, Condition whereClause) {
         List<Expression> columns = ProjectSqlHelper.getColumns(entityTable, EntityManager.ENTITY_ALIAS);
-        columns.addAll(ClientSqlHelper.getColumns(clientIdTable, "clientId"));
+        columns.addAll(ClientSqlHelper.getColumns(clientTable, "client"));
         SelectFromAndJoinCondition selectFrom = Select
             .builder()
             .select(columns)
             .from(entityTable)
-            .leftOuterJoin(clientIdTable)
-            .on(Column.create("client_id_id", entityTable))
-            .equals(Column.create("id", clientIdTable));
+            .leftOuterJoin(clientTable)
+            .on(Column.create("client_id", entityTable))
+            .equals(Column.create("id", clientTable));
         // we do not support Criteria here for now as of https://github.com/jhipster/generator-jhipster/issues/18269
         String select = entityManager.createSelect(selectFrom, Project.class, pageable, whereClause);
         return db.sql(select).map(this::process);
@@ -103,7 +103,7 @@ class ProjectRepositoryInternalImpl extends SimpleR2dbcRepository<Project, Long>
 
     private Project process(Row row, RowMetadata metadata) {
         Project entity = projectMapper.apply(row, "e");
-        entity.setClientId(clientMapper.apply(row, "clientId"));
+        entity.setClient(clientMapper.apply(row, "client"));
         return entity;
     }
 

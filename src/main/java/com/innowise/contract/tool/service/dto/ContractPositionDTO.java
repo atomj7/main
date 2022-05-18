@@ -79,7 +79,7 @@ public class ContractPositionDTO implements Serializable {
     @Schema(description = "Статус словарей", required = true)
     private String statusId;
 
-    private SubcontractDTO subcontractId;
+    private SubcontractDTO subcontract;
 
     public Long getId() {
         return id;
@@ -161,12 +161,12 @@ public class ContractPositionDTO implements Serializable {
         this.statusId = statusId;
     }
 
-    public SubcontractDTO getSubcontractId() {
-        return subcontractId;
+    public SubcontractDTO getSubcontract() {
+        return subcontract;
     }
 
-    public void setSubcontractId(SubcontractDTO subcontractId) {
-        this.subcontractId = subcontractId;
+    public void setSubcontract(SubcontractDTO subcontract) {
+        this.subcontract = subcontract;
     }
 
     @Override
@@ -204,7 +204,7 @@ public class ContractPositionDTO implements Serializable {
             ", currencyId='" + getCurrencyId() + "'" +
             ", rateAnHour=" + getRateAnHour() +
             ", statusId='" + getStatusId() + "'" +
-            ", subcontractId=" + getSubcontractId() +
+            ", subcontract=" + getSubcontract() +
             "}";
     }
 }

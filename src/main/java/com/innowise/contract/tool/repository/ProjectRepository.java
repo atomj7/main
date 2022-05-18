@@ -15,11 +15,11 @@ import reactor.core.publisher.Mono;
 @SuppressWarnings("unused")
 @Repository
 public interface ProjectRepository extends ReactiveCrudRepository<Project, Long>, ProjectRepositoryInternal {
-    @Query("SELECT * FROM project entity WHERE entity.client_id_id = :id")
-    Flux<Project> findByClientId(Long id);
+    @Query("SELECT * FROM project entity WHERE entity.client_id = :id")
+    Flux<Project> findByClient(Long id);
 
-    @Query("SELECT * FROM project entity WHERE entity.client_id_id IS NULL")
-    Flux<Project> findAllWhereClientIdIsNull();
+    @Query("SELECT * FROM project entity WHERE entity.client_id IS NULL")
+    Flux<Project> findAllWhereClientIsNull();
 
     @Override
     <S extends Project> Mono<S> save(S entity);

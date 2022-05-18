@@ -58,6 +58,11 @@ public class CacheConfiguration {
             createCache(cm, com.innowise.contract.tool.domain.Subcontract.class.getName());
             createCache(cm, com.innowise.contract.tool.domain.Subcontract.class.getName() + ".ids");
             createCache(cm, com.innowise.contract.tool.domain.ContractPosition.class.getName());
+            createCache(cm, com.innowise.contract.tool.domain.Client.class.getName() + ".projects");
+            createCache(cm, com.innowise.contract.tool.domain.Client.class.getName() + ".contracts");
+            createCache(cm, com.innowise.contract.tool.domain.Contract.class.getName() + ".subcontracts");
+            createCache(cm, com.innowise.contract.tool.domain.Project.class.getName() + ".subcontracts");
+            createCache(cm, com.innowise.contract.tool.domain.Subcontract.class.getName() + ".contractPositions");
             // jhipster-needle-caffeine-add-entry
         };
     }

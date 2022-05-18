@@ -32,7 +32,7 @@
             <column name="status_id" type="varchar(255)" remarks="Статус дикшинари">
                 <constraints nullable="false" />
             </column>
-            <column name="client_id_id" type="bigint">
+            <column name="client_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->

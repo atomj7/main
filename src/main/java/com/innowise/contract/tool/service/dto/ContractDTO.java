@@ -99,7 +99,7 @@ public class ContractDTO implements Serializable {
     @Schema(description = "Ссылка")
     private String link;
 
-    private ClientDTO clientId;
+    private ClientDTO client;
 
     public Long getId() {
         return id;
@@ -213,12 +213,12 @@ public class ContractDTO implements Serializable {
         this.link = link;
     }
 
-    public ClientDTO getClientId() {
-        return clientId;
+    public ClientDTO getClient() {
+        return client;
     }
 
-    public void setClientId(ClientDTO clientId) {
-        this.clientId = clientId;
+    public void setClient(ClientDTO client) {
+        this.client = client;
     }
 
     @Override
@@ -260,7 +260,7 @@ public class ContractDTO implements Serializable {
             ", finishDate='" + getFinishDate() + "'" +
             ", statusId='" + getStatusId() + "'" +
             ", link='" + getLink() + "'" +
-            ", clientId=" + getClientId() +
+            ", client=" + getClient() +
             "}";
     }
 }
