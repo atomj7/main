@@ -1,5 +1,3 @@
-
-/** Clients */
 entity Client {
 	id Long,
 	/** Название организации клиента*/
@@ -88,7 +86,6 @@ entity Project {
 
 }
 
-/**Субконтракты*/
 entity Subcontract {
 
 	/**ПК*/
