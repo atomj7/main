@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Contract.
+    -->
+    <changeSet id="20220518152149-1" author="jhipster">
+        <createTable tableName="contract" remarks="Contracts">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="cipher" type="varchar(255)" remarks="Шифр контракта">
+                <constraints nullable="false" />
+            </column>
+            <column name="client_id" type="bigint" remarks="Айди клиента">
+                <constraints nullable="false" />
+            </column>
+            <column name="provider_id" type="varchar(255)" remarks="Справочник поставщиков">
+                <constraints nullable="false" />
+            </column>
+            <column name="type_id" type="varchar(255)" remarks="Тип контракта справочник">
+                <constraints nullable="true" />
+            </column>
+            <column name="sum" type="${floatType}" remarks="Сумма">
+                <constraints nullable="false" />
+            </column>
+            <column name="position_count" type="integer" remarks="Всего позиций">
+                <constraints nullable="false" />
+            </column>
+            <column name="currency_id" type="varchar(255)" remarks="Валюта справочник">
+                <constraints nullable="false" />
+            </column>
+            <column name="payment_term" type="integer" remarks="Срок оплаты кол-во дней">
+                <constraints nullable="false" />
+            </column>
+            <column name="payment_term_type_id" type="varchar(255)" remarks="Тип срока оплаты справочник">
+                <constraints nullable="false" />
+            </column>
+            <column name="start_date" type="date" remarks="Дата начала">
+                <constraints nullable="false" />
+            </column>
+            <column name="finish_date" type="date" remarks="Дата окончания">
+                <constraints nullable="false" />
+            </column>
+            <column name="status_id" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="link" type="varchar(255)" remarks="Ссылка">
+                <constraints nullable="true" />
+            </column>
+            <column name="client_id_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20220518152149-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/contract.csv"
+                  separator=";"
+                  tableName="contract"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="cipher" type="string"/>
+            <column name="client_id" type="numeric"/>
+            <column name="provider_id" type="string"/>
+            <column name="type_id" type="string"/>
+            <column name="sum" type="numeric"/>
+            <column name="position_count" type="numeric"/>
+            <column name="currency_id" type="string"/>
+            <column name="payment_term" type="numeric"/>
+            <column name="payment_term_type_id" type="string"/>
+            <column name="start_date" type="date"/>
+            <column name="finish_date" type="date"/>
+            <column name="status_id" type="string"/>
+            <column name="link" type="string"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

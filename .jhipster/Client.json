@@ -1,0 +1,126 @@
+{
+  "applications": "*",
+  "changelogDate": "20220518152148",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "client",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Название организации клиента"
+    },
+    {
+      "fieldName": "salesManagerId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Sales Manager, который заводил клиента"
+    },
+    {
+      "fieldName": "countryId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Страна клиента справочник"
+    },
+    {
+      "fieldName": "partnerStatus",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Статус партнера"
+    },
+    {
+      "fieldName": "contactPerson",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Контактное лицо"
+    },
+    {
+      "fieldName": "contractEmail",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Электронная почта контактного лица"
+    },
+    {
+      "fieldName": "industryId",
+      "fieldType": "String",
+      "javadoc": "Индустрия клиента справочник"
+    },
+    {
+      "fieldName": "signer",
+      "fieldType": "String",
+      "javadoc": "Лицо, которое подписывает все документы(Подписант)"
+    },
+    {
+      "fieldName": "signerPosition",
+      "fieldType": "String",
+      "javadoc": "Должность подписанта"
+    },
+    {
+      "fieldName": "legalAdress",
+      "fieldType": "String",
+      "javadoc": "Юридический адрес"
+    },
+    {
+      "fieldName": "registrationNumber",
+      "fieldType": "String",
+      "javadoc": "Регистрационный номер организации клиента"
+    },
+    {
+      "fieldName": "baseOfActivityId",
+      "fieldType": "String",
+      "javadoc": "Основание деятельности справочник"
+    },
+    {
+      "fieldName": "vatNumber",
+      "fieldType": "String",
+      "javadoc": "VAT номер(УНП)"
+    },
+    {
+      "fieldName": "bankName",
+      "fieldType": "String",
+      "javadoc": "Банк"
+    },
+    {
+      "fieldName": "bankAdress",
+      "fieldType": "String",
+      "javadoc": "Адрес банка"
+    },
+    {
+      "fieldName": "swiftCode",
+      "fieldType": "String",
+      "javadoc": "SWIFT код"
+    },
+    {
+      "fieldName": "ibanCode",
+      "fieldType": "String",
+      "javadoc": "IBAN"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Client",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "project",
+      "otherEntityRelationshipName": "clientId",
+      "relationshipName": "id",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "contract",
+      "otherEntityRelationshipName": "clientId",
+      "relationshipName": "id",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl",
+  "skipClient": true
+}

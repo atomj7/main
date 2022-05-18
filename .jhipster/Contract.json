@@ -1,0 +1,111 @@
+{
+  "applications": "*",
+  "changelogDate": "20220518152149",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "contract",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "cipher",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Шифр контракта"
+    },
+    {
+      "fieldName": "clientId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Айди клиента"
+    },
+    {
+      "fieldName": "providerId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Справочник поставщиков"
+    },
+    {
+      "fieldName": "typeId",
+      "fieldType": "String",
+      "javadoc": "Тип контракта справочник"
+    },
+    {
+      "fieldName": "sum",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Сумма"
+    },
+    {
+      "fieldName": "positionCount",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Всего позиций"
+    },
+    {
+      "fieldName": "currencyId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Валюта справочник"
+    },
+    {
+      "fieldName": "paymentTerm",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Срок оплаты кол-во дней"
+    },
+    {
+      "fieldName": "paymentTermTypeId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Тип срока оплаты справочник"
+    },
+    {
+      "fieldName": "startDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Дата начала"
+    },
+    {
+      "fieldName": "finishDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"],
+      "javadoc": "Дата окончания"
+    },
+    {
+      "fieldName": "statusId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "link",
+      "fieldType": "String",
+      "javadoc": "Ссылка"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "Contracts",
+  "jpaMetamodelFiltering": false,
+  "name": "Contract",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "subcontract",
+      "otherEntityRelationshipName": "contractId",
+      "relationshipName": "id",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "client",
+      "otherEntityRelationshipName": "id",
+      "relationshipName": "clientId",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl",
+  "skipClient": true
+}

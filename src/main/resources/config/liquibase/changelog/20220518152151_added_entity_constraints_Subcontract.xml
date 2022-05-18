@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Subcontract.
+    -->
+    <changeSet id="20220518152151-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="contract_id_id"
+                                 baseTableName="subcontract"
+                                 constraintName="fk_subcontract__contract_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contract"/>
+
+        <addForeignKeyConstraint baseColumnNames="project_id_id"
+                                 baseTableName="subcontract"
+                                 constraintName="fk_subcontract__project_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="project"/>
+    </changeSet>
+</databaseChangeLog>
