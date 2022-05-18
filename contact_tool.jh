@@ -153,15 +153,15 @@ entity ContractPosition {
 
 
 relationship OneToMany {
-	Client{id} to Project {clientId},
+	Client to Project ,
 
-	Client{id} to Contract {clientId},
+	Client to Contract ,
 	
-    Contract {id} to Subcontract {contractId},
+    Contract  to Subcontract ,
     
-    Project {id} to Subcontract {projectId},
+    Project to Subcontract ,
 	
-    Subcontract{id} to ContractPosition {subcontractId}
+    Subcontract to ContractPosition
 }
 
 
